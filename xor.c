@@ -26,15 +26,15 @@ char char_xor(char a, char b){
 /*
 Objective : apply xor opperation between two value
 Input : int a, int b
-Output : int
+Output : None
 */
-char * str_xor(char *a, char *b, char *output){
+char * str_xor(char *a, char *b){
     int len_a = str_lenght(a);
     int len_b = str_lenght(b);
     int len = int_max(len_a,len_b);
-    output = malloc(len);
+    char *output = malloc(len);
     for (int i = 0; i < len;i++){
-        *(output+i) = *(a+i) ^ *(b+i);
+        output[i] = a[i] ^ b[i];
     }
     return output;
 }
