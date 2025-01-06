@@ -1,0 +1,7 @@
+char * xor_string(char *txt, int txt_length,char *key,int key_length){
+    char *output = (char *)malloc(txt_length);
+    for (int i = 0; i < txt_length; i++){
+        output[i] = txt[i] ^ key[i%key_length];
+    }
+    return output;
+}
