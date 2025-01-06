@@ -45,7 +45,7 @@ int main(int argc, char **argv){
     int extlenght = get_str_length(ext);
 
     // Add new extention to the filename
-    char * ouputfile = malloc((filenamelenght + extlenght)*sizeof(char));
+    char * ouputfile = malloc((filenamelenght + extlenght+1)*sizeof(char));
     int i = 0;
     while (i < filenamelenght + extlenght) {
         if (i < filenamelenght){
