@@ -44,18 +44,29 @@ int main(int argc, char **argv){
     // Get extension lenght
     int extlenght = get_str_length(ext);
 
-    // Add new extention to the filename
+    // Check if the file has the `ext` extension
     char * ouputfile = malloc((filenamelenght + extlenght+1)*sizeof(char));
-    int i = 0;
-    while (i < filenamelenght + extlenght) {
-        if (i < filenamelenght){
+    if (compare_str(ext,argv[1]+filenamelenght-extlenght) == 1){
+        // Remove the extention from the filename
+        int i = 0;
+        while (i < filenamelenght - extlenght) {
             ouputfile[i] = argv[1][i];
-        }else{
-            ouputfile[i] = ext[i-filenamelenght];
+            i++;
         }
-        i++;
+        ouputfile[i] = '\0';
+    }else {
+        // Add new extention to the filename
+        int i = 0;
+        while (i < filenamelenght + extlenght) {
+            if (i < filenamelenght){
+                ouputfile[i] = argv[1][i];
+            }else{
+                ouputfile[i] = ext[i-filenamelenght];
+            }
+            i++;
+        }
+        ouputfile[i] = '\0';
     }
-    ouputfile[i] = '\0';
 
     // Create a new file
     FILE *output = fopen(ouputfile,"wb");
