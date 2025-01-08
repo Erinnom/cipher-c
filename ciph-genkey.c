@@ -21,6 +21,8 @@ int main(int argc, char ** argv){
 
     // Generate the key
     char * key = malloc(str_to_int(argv[1])*sizeof(char));
+    char j;
+    srand((unsigned int) &j); // use the address of j as seed
     for (int i = 0; i < str_to_int(argv[1]); i++){
         key[i] = rand()%256;
     }
