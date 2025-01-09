@@ -1,3 +1,5 @@
+#ifndef STR_H
+#define STR_H
 /*
 Objective : get the length of a string
 Input : string
@@ -44,3 +46,4 @@ int compare_str(char * str1, char * str2){
     }
     return 0;
 }
+#endif

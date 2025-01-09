@@ -1,3 +1,7 @@
+#ifndef XOR_H
+#define XOR_H
+#include <stdio.h>
+#include <stdlib.h>
 /*
 Objective : cypher a text with a key with the XOR method
 Input : data, data length, key, key length
@@ -10,3 +14,4 @@ char * xor_string(char *txt, int txt_length,char *key,int key_length){
     }
     return output;
 }
+#endif

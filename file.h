@@ -1,8 +1,13 @@
+#ifndef FILE_H
+#define FILE_H
+#include <stdio.h>
+#include <stdlib.h>
 /*
 Objective : get the size of a file
 Input : file
 Output : size of the file
 */
+
 int get_file_size(FILE *file){
     // Save the current position
     long current = ftell(file);
@@ -25,3 +30,4 @@ char *get_content(FILE *file, int length){
     fread(content,1,length,file);
     return content;
 }
+#endif
