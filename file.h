@@ -8,13 +8,13 @@ Input : file
 Output : size of the file
 */
 
-int get_file_size(FILE *file){
+unsigned long int get_file_size(FILE *file){
     // Save the current position
-    long current = ftell(file);
+    unsigned long int current = ftell(file);
     // Move to the end of the file
     fseek(file,0,SEEK_END);
     // Get the position
-    long size = ftell(file);
+    unsigned long int size = ftell(file);
     // Move back to the saved position
     fseek(file,current,SEEK_SET);
     return size;

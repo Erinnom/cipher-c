@@ -30,6 +30,10 @@ int main(int argc, char **argv){
 
     // Get the key size
     int key_lenght = get_file_size(keyfile);
+    if (key_lenght <= 0){
+        printf("Error while reading of key\n");
+        return 1;
+    }
 
     // Put key in a variable
     char * key = get_content(keyfile, key_lenght);
@@ -68,6 +72,20 @@ int main(int argc, char **argv){
         ouputfile[i] = '\0';
     }
 
+    // Get text file size
+    unsigned long int textlenght = get_file_size(file);
+    if (textlenght <= 0){
+        printf("Error while reading data file, file size of %ld bytes\n",textlenght);
+        return 1;
+    }
+
+    // Load text file content
+    char * txt = get_content(file,textlenght);
+    fclose(file);
+
+    // Cypher the text
+    char * res = xor_string(txt,textlenght,key,key_lenght);
+
     // Create a new file
     FILE *output = fopen(ouputfile,"wb");
     if (output == NULL){
@@ -75,15 +93,8 @@ int main(int argc, char **argv){
         return 1;
     }
 
-    // Get text file size
-    int textlenght = get_file_size(file);
-
-    // Load text file content
-    char * txt = get_content(file,textlenght);
-    fclose(file);
-
-    // Write the cipher text in the new file
-    fwrite(xor_string(txt,textlenght,key,key_lenght), 1, textlenght,output);
+    // Write the cipher text into the new file
+    fwrite(res, 1, textlenght,output);
     fclose(output);
 
     return 0;
