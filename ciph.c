@@ -38,6 +38,7 @@ int main(int argc, char **argv){
     // Put key in a variable
     char * key = get_content(keyfile, key_lenght);
     fclose(keyfile);
+    free(keyfile);
 
     // Get file name lenght
     int filenamelenght = get_str_length(argv[1]);
@@ -82,7 +83,7 @@ int main(int argc, char **argv){
     // Load text file content
     char * txt = get_content(file,textlenght);
     fclose(file);
-
+    free(file);
     // Cypher the text
     char * res = xor_string(txt,textlenght,key,key_lenght);
 
@@ -96,6 +97,6 @@ int main(int argc, char **argv){
     // Write the cipher text into the new file
     fwrite(res, 1, textlenght,output);
     fclose(output);
-
+    free(output);
     return 0;
 }
